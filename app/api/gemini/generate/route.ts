@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash-image-preview",
-      contents: [{ text: prompt }],
+      contents: prompt,
     });
 
     // Process the response to extract the image

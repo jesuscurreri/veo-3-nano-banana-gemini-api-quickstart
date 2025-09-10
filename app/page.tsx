@@ -34,11 +34,17 @@ const VeoStudio: React.FC = () => {
   useEffect(() => {
     if (mode === "create-video") {
       setSelectedModel("veo-3.0-generate-001");
-    } else if (mode === "create-image") {
-      setSelectedModel("imagen-4.0-fast-generate-001");
     } else if (mode === "edit-image" || mode === "compose-image") {
       setSelectedModel("gemini-2.5-flash-image-preview");
+    } else if (mode === "create-image") {
+      if (
+        !selectedModel.includes("gemini") &&
+        !selectedModel.includes("imagen")
+      ) {
+        setSelectedModel("gemini-2.5-flash-image-preview");
+      }
     }
+  }, [mode, selectedModel]);
 
   // Image generation prompts
   const [imagePrompt, setImagePrompt] = useState("");

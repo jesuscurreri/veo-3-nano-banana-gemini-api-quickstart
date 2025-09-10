@@ -25,15 +25,9 @@ const ModelSelector: React.FC<ModelSelectorProps> = ({
         "veo-3.0-fast-generate-001",
         "veo-2.0-generate-001",
       ];
-    } else if (currentMode === "create-image") {
-      // Only Imagen supports text-to-image generation
-      return ["imagen-4.0-fast-generate-001"];
-    } else if (currentMode === "edit-image" || currentMode === "compose-image") {
-      // Gemini is for editing/composing existing images
-      return ["gemini-2.5-flash-image-preview"];
     } else {
-      // Fallback
-      return ["imagen-4.0-fast-generate-001"];
+      // For image modes
+      return ["gemini-2.5-flash-image-preview", "imagen-4.0-fast-generate-001"];
     }
   };
 
